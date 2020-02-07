@@ -35,24 +35,6 @@ pipeline{
 				
 			}
 			
-			stage("check code quality"){
-				steps{
-					build 'maven-webapp-checkstyle'
-				}
-				
-				post{
-					
-					success{
-						echo "app sent to stagging evn"
-					}
-					
-					failure{
-						echo "app failure to sent to stagging evn "
-					}
-					
-				}
-				
-			}
 			
 			stage("production"){
 				steps{
@@ -75,6 +57,27 @@ pipeline{
 				}
 				
 			}
+			
+			stage("check code quality"){
+				steps{
+					build 'maven-webapp-checkstyle'
+				}
+				
+				post{
+					
+					success{
+						echo "app sent to stagging evn"
+					}
+					
+					failure{
+						echo "app failure to sent to stagging evn "
+					}
+					
+				}
+				
+			}
+			
+			
 			
 			
 		}
